@@ -277,7 +277,7 @@
                 fileUrl: fileUrl
             };
 
-            const response = await fetch('YOUR_WEB_APP_EXEC_URL_HERE', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycby8pqAVIaUO64ZEOhIYIVXOVMnIdu0VH809DoRQcgc4v8Y0Ydos4DEaNrW45vesJP4dCg/exec', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -311,3 +311,4 @@
     updateDisplay();
     document.getElementById('submitBtn').addEventListener('click', submitForm);
 </script>
+
