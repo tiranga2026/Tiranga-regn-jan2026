@@ -132,20 +132,98 @@
 
   <script>
     // ⚠️ REPLACE WITH YOUR ACTUAL WEB APP URL AFTER DEPLOYMENT
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzmBf4BCd0-pJXS4yeMOqzn-louaVh9hI8YblJ-upLdbPyavuVysgEzaHmn-OIA1I0bQ/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyxGO0l8g1KzgLS2xBHw-nbt5kbWVlOAMxoev6kMe3Y2nmiE_lYHako3dEAIItrEs5E1Q/exec';
 
     const allEvents = {
-      preprimary: [{name:'Happy feet - Solo',price:300},{name:'Innocence in paint - Solo',price:300},{name:'Whats in my bag? - Solo',price:300},{name:'Moudling minds - Solo',price:300}],
-      grade1: [{name:'Soul Speaks - Solo',price:300},{name:'India Icons - Solo',price:300},{name:'Pieces to picture',price:300}],
-      grade2: [{name:'Soul Speaks - Solo',price:300},{name:'India Icons - Solo',price:300},{name:'Pieces to picture - Solo',price:300}],
-      grade3: [{name:'Two minute Tale-Mini Theatre - Solo',price:300},{name:'A cultural MASCOT - Group(2 Persons)',price:500},{name:'ECO Hero - Solo',price:300},{name:'dance with a prop - Solo',price:300},{name:'two minute medley - Solo',price:300}],
-      grade4: [{name:'Two minute Tale-Mini Theatre - Solo',price:300},{name:'A cultural MASCOT - Group(2 Persons)',price:500},{name:'ECO Hero - Solo',price:300},{name:'dance with a prop - Solo',price:300},{name:'two minute medley - Solo',price:300}],
-      grade5: [{name:'Two minute Tale-Mini Theatre - Solo',price:300},{name:'A cultural MASCOT - Group(2 Persons)',price:500},{name:'ECO Hero - Solo',price:300},{name:'dance with a prop - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'States and their suprises - Group(2 Persons)',price:500}],
-      grade6: [{name:'Gadget World - Solo',price:300},{name:'Vibrant Visage - Group(2 Persons)',price:500},{name:'Tech based triumph - Group(2 Persons)',price:500},{name:'Dream Design Do - Solo',price:300},{name:'60 second spotlight- picture based - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'Upscaled Art Flow - Group(2 Persons)',price:500},{name:'States and their suprises - Group(2 Persons)',price:500}],
-      grade7: [{name:'Gadget World - Solo',price:300},{name:'Vibrant Visage - Group(2 Persons)',price:500},{name:'Tech based triumph - Group(2 Persons)',price:500},{name:'Dream Design Do - Solo',price:300},{name:'60 second spotlight- picture based - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'Upscaled Art Flow - Group(2 Persons)',price:500}],
-      grade8: [{name:'Gadget World - Solo',price:300},{name:'Vibrant Visage - Group(2 Persons)',price:500},{name:'Tech based triumph - Group(2 Persons)',price:500},{name:'Dream Design Do - Solo',price:300},{name:'60 second spotlight- picture based - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'Upscaled Art Flow - Group(2 Persons)',price:500}],
-      grade9: [{name:'Inventia - Group(2-3 Persons)',price:500},{name:'Pitch Bharath - Group(3-4 Persons)',price:500},{name:'Reflection through moments - Group(2 Persons)',price:500},{name:'Culture Carnival - Group(5 Persons)',price:500},{name:'Digital Arena - Group(3-4 Persons)',price:500},{name:'Path Finder - Solo',price:300},{name:'Echoes of Eloquence - Solo',price:300},{name:'Binary Battle - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'Discovery Files - Group(2-4 Persons)',price:500},{name:'Unplugged voices - Solo',price:300},{name:'Meme to Motion',price:300}],
-      combined: [{name:'Swirl and Twirl - Group(5-10 Persons)',price:800},{name:'Sovereignity Symphony - Group(5-12 Persons)',price:800},{name:'From Films to Fashion - Solo',price:300},{name:'Flash ad - Group(3-4 Persons)',price:500}]
+      preprimary: [
+        {name:'Happy feet - Solo',price:300},
+        {name:'Innocence in paint - Solo',price:300},
+        {name:'Whats in my bag? - Solo',price:300},
+        {name:'Moudling minds - Solo',price:300}
+      ],
+      grade1: [
+        {name:'Soul Speaks - Solo',price:300},
+        {name:'India Icons - Solo',price:300},
+        {name:'Pieces to picture',price:300}
+      ],
+      grade2: [
+        {name:'Soul Speaks - Solo',price:300},
+        {name:'India Icons - Solo',price:300},
+        {name:'Pieces to picture - Solo',price:300}
+      ],
+      grade3: [
+        {name:'Two minute Tale-Mini Theatre - Solo',price:300},
+        {name:'A cultural MASCOT - Group(2 Persons)',price:500},
+        {name:'ECO Hero - Solo',price:300},
+        {name:'dance with a prop - Solo',price:300},
+        {name:'two minute medley - Solo',price:300}
+      ],
+      grade4: [
+        {name:'Two minute Tale-Mini Theatre - Solo',price:300},
+        {name:'A cultural MASCOT - Group(2 Persons)',price:500},
+        {name:'ECO Hero - Solo',price:300},
+        {name:'dance with a prop - Solo',price:300},
+        {name:'two minute medley - Solo',price:300}
+      ],
+      grade5: [
+        {name:'Two minute Tale-Mini Theatre - Solo',price:300},
+        {name:'A cultural MASCOT - Group(2 Persons)',price:500},
+        {name:'ECO Hero - Solo',price:300},
+        {name:'dance with a prop - Solo',price:300},
+        {name:'two minute medley - Solo',price:300},
+        {name:'States and their suprises - Group(2 Persons)',price:500}
+      ],
+      grade6: [
+        {name:'Gadget World - Solo',price:300},
+        {name:'Vibrant Visage - Group(2 Persons)',price:500},
+        {name:'Tech based triumph - Group(2 Persons)',price:500},
+        {name:'Dream Design Do - Solo',price:300},
+        {name:'60 second spotlight- picture based - Solo',price:300},
+        {name:'Rhythm Rumble - Solo',price:300},
+        {name:'two minute medley - Solo',price:300},
+        {name:'Upscaled Art Flow - Group(2 Persons)',price:500},
+        {name:'States and their suprises - Group(2 Persons)',price:500}
+      ],
+      grade7: [
+        {name:'Gadget World - Solo',price:300},
+        {name:'Vibrant Visage - Group(2 Persons)',price:500},
+        {name:'Tech based triumph - Group(2 Persons)',price:500},
+        {name:'Dream Design Do - Solo',price:300},
+        {name:'60 second spotlight- picture based - Solo',price:300},
+        {name:'Rhythm Rumble - Solo',price:300},
+        {name:'two minute medley - Solo',price:300},
+        {name:'Upscaled Art Flow - Group(2 Persons)',price:500}
+      ],
+      grade8: [
+        {name:'Gadget World - Solo',price:300},
+        {name:'Vibrant Visage - Group(2 Persons)',price:500},
+        {name:'Tech based triumph - Group(2 Persons)',price:500},
+        {name:'Dream Design Do - Solo',price:300},
+        {name:'60 second spotlight- picture based - Solo',price:300},
+        {name:'Rhythm Rumble - Solo',price:300},
+        {name:'two minute medley - Solo',price:300},
+        {name:'Upscaled Art Flow - Group(2 Persons)',price:500}
+      ],
+      grade9: [
+        {name:'Inventia - Group(2-3 Persons)',price:500},
+        {name:'Pitch Bharath - Group(3-4 Persons)',price:500},
+        {name:'Reflection through moments - Group(2 Persons)',price:500},
+        {name:'Culture Carnival - Group(5 Persons)',price:500},
+        {name:'Digital Arena - Group(3-4 Persons)',price:500},
+        {name:'Path Finder - Solo',price:300},
+        {name:'Echoes of Eloquence - Solo',price:300},
+        {name:'Binary Battle - Solo',price:300},
+        {name:'Rhythm Rumble - Solo',price:300},
+        {name:'Discovery Files - Group(2-4 Persons)',price:500},
+        {name:'Unplugged voices - Solo',price:300},
+        {name:'Meme to Motion',price:300}
+      ],
+      combined: [
+        {name:'Swirl and Twirl - Group(5-10 Persons)',price:800},
+        {name:'Sovereignity Symphony - Group(5-12 Persons)',price:800},
+        {name:'From Films to Fashion - Solo',price:300},
+        {name:'Flash ad - Group(3-4 Persons)',price:500}
+      ]
     };
 
     let selectedEvents = [], eventParticipants = {}, currentTab = 'preprimary';
@@ -161,7 +239,8 @@
       document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
       document.getElementById(tabName).classList.add('active');
       document.getElementById('selectedGrade').value = tabName;
-      initEvents(); updateDisplay();
+      initEvents(); 
+      updateDisplay();
     }
 
     function initEvents() {
@@ -193,13 +272,22 @@
       const event = allEvents[currentTab].find(e => e.name === eventName);
       const input = document.getElementById(eventName.toLowerCase().replace(/[^a-z0-9]/g, ''));
       if (index > -1) {
-        selectedEvents.splice(index, 1); if (input) { input.style.display = 'none'; input.value = 0; }
+        selectedEvents.splice(index, 1); 
+        if (input) { 
+          input.style.display = 'none'; 
+          input.value = 0; 
+        }
         eventParticipants[eventName] = 0;
       } else {
-        selectedEvents.push(event); if (input) { input.style.display = 'block'; if (!input.value || input.value === '0') input.value = 1; }
+        selectedEvents.push(event); 
+        if (input) { 
+          input.style.display = 'block'; 
+          if (!input.value || input.value === '0') input.value = 1; 
+        }
         eventParticipants[eventName] = parseInt(input?.value) || 1;
       }
-      updateDisplay(); updateEventButtons();
+      updateDisplay(); 
+      updateEventButtons();
     }
 
     function updateEventButtons() {
@@ -213,15 +301,21 @@
         const input = document.getElementById(event.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
         if (input) eventParticipants[event.name] = parseInt(input.value) || 0;
       });
+      
       const totalEvents = selectedEvents.length;
       const totalParticipants = Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0);
-      const grandTotal = selectedEvents.reduce((sum, event) => sum + (event.price * (eventParticipants[event.name] || 0)), 0);
+      
+      // Calculate grand total using actual event prices
+      const grandTotal = selectedEvents.reduce((sum, event) => {
+        const participants = eventParticipants[event.name] || 0;
+        return sum + (event.price * participants);
+      }, 0);
+      
       document.getElementById('totalEvents').textContent = totalEvents;
       document.getElementById('totalParticipants').textContent = totalParticipants;
       document.getElementById('totalAmount').textContent = `₹${grandTotal.toLocaleString()}`;
     }
 
-    // ✅ FIXED FILE UPLOAD (No Imgur - Direct to Google Drive)
     async function uploadFileToDrive(file) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -229,14 +323,18 @@
           try {
             const response = await fetch(APPS_SCRIPT_URL, {
               method: 'POST',
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
               body: new URLSearchParams({
+                action: 'upload',
                 data: e.target.result.split(',')[1],
                 mimetype: file.type,
                 filename: file.name
               })
             });
-            resolve(await response.text());
-          } catch {
+            const result = await response.text();
+            resolve(result);
+          } catch (error) {
+            console.error('Upload error:', error);
             resolve(file.name);
           }
         };
@@ -258,23 +356,50 @@
         }
       }
 
-      if (!document.getElementById('paymentProof').files[0]) { showError('Payment Proof required'); return; }
-      if (selectedEvents.length === 0) { showError('Select at least one event'); return; }
-      if (Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0) === 0) { showError('Add participants'); return; }
+      if (!document.getElementById('paymentProof').files[0]) { 
+        showError('Payment Proof required'); 
+        return; 
+      }
+      if (selectedEvents.length === 0) { 
+        showError('Select at least one event'); 
+        return; 
+      }
+      if (Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0) === 0) { 
+        showError('Add participants'); 
+        return; 
+      }
 
-      submitBtn.disabled = true; formContainer.style.display = 'none'; loading.style.display = 'block';
+      submitBtn.disabled = true; 
+      formContainer.style.display = 'none'; 
+      loading.style.display = 'block';
 
       try {
+        // Upload file first
         const fileUrl = await uploadFileToDrive(document.getElementById('paymentProof').files[0]);
+        
+        // Prepare event details with prices
+        const eventDetails = {};
+        selectedEvents.forEach(event => {
+          const participants = eventParticipants[event.name] || 0;
+          if (participants > 0) {
+            eventDetails[event.name] = {
+              participants: participants,
+              price: event.price,
+              total: event.price * participants
+            };
+          }
+        });
+        
         const formData = {
+          action: 'submit',
           schoolName: document.getElementById('schoolName').value.trim(),
           contact: document.getElementById('contact').value.trim(),
           email: document.getElementById('email').value.trim(),
           transactionId: document.getElementById('transactionId').value.trim(),
           selectedGrade: document.getElementById('selectedGrade').value,
-          eventParticipants: eventParticipants,
+          eventDetails: eventDetails,
           totalAmount: parseInt(document.getElementById('totalAmount').textContent.replace(/[₹,]/g, '')) || 0,
-          fileUrl
+          fileUrl: fileUrl
         };
 
         const response = await fetch(APPS_SCRIPT_URL, {
@@ -285,23 +410,28 @@
 
         const result = await response.text();
         if (result.includes('SUCCESS')) {
-          loading.style.display = 'none'; successMsg.style.display = 'block';
+          loading.style.display = 'none'; 
+          successMsg.style.display = 'block';
         } else {
           throw new Error(result);
         }
       } catch (error) {
         showError('Submission failed: ' + error.message);
-        formContainer.style.display = 'block'; loading.style.display = 'none'; submitBtn.disabled = false;
+        formContainer.style.display = 'block'; 
+        loading.style.display = 'none'; 
+        submitBtn.disabled = false;
       }
     }
 
     function showError(message) {
       const errorMsg = document.getElementById('errorMsg');
-      errorMsg.textContent = message; errorMsg.style.display = 'block';
+      errorMsg.textContent = message; 
+      errorMsg.style.display = 'block';
       setTimeout(() => errorMsg.style.display = 'none', 5000);
     }
 
-    initEvents(); updateDisplay();
+    initEvents(); 
+    updateDisplay();
     document.getElementById('submitBtn').addEventListener('click', submitForm);
   </script>
 </body>
