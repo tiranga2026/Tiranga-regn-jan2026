@@ -5,7 +5,6 @@
   <title>🇮🇳 Tiranga Registration Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* [Keep all your existing CSS exactly as provided - no changes needed] */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
     .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
@@ -89,7 +88,7 @@
       <div class="form-group">
         <label>Scan to Pay (QR Code)</label>
         <div class="qr-wrapper">
-          <img id="paymentQr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Pay+to+UPI+ID" alt="Payment QR Code">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=UPI%3Ayourupiid%40paytm" alt="Payment QR Code">
         </div>
       </div>
 
@@ -100,7 +99,6 @@
 
       <div class="form-group">
         <label>Select Events & Participants *</label>
-        <!-- [All your existing tab-content divs remain exactly the same] -->
         <div class="tab-content active" id="preprimary"><div class="events-grid" id="eventsGrid-preprimary"></div></div>
         <div class="tab-content" id="grade1"><div class="events-grid" id="eventsGrid-grade1"></div></div>
         <div class="tab-content" id="grade2"><div class="events-grid" id="eventsGrid-grade2"></div></div>
@@ -133,33 +131,27 @@
   </div>
 
   <script>
-    // [Keep ALL your existing allEvents object, tab switching, initEvents, toggleEvent, updateEventButtons, updateDisplay functions EXACTLY as provided]
+    // ⚠️ REPLACE WITH YOUR ACTUAL WEB APP URL AFTER DEPLOYMENT
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzmBf4BCd0-pJXS4yeMOqzn-louaVh9hI8YblJ-upLdbPyavuVysgEzaHmn-OIA1I0bQ/exec';
 
     const allEvents = {
-      preprimary: [{ name: 'Happy feet - Solo', price: 300 }, { name: 'Innocence in paint - Solo', price: 300 }, { name: 'Whats in my bag? - Solo', price: 300 }, { name: 'Moudling minds - Solo', price: 300 }],
-      grade1: [{ name: 'Soul Speaks - Solo', price: 300 }, { name: 'India Icons - Solo', price: 300 }, { name: 'Pieces to picture', price: 300 }],
-      grade2: [{ name: 'Soul Speaks - Solo', price: 300 }, { name: 'India Icons - Solo', price: 300 }, { name: 'Pieces to picture - Solo', price: 300 }],
-      grade3: [{ name: 'Two minute Tale-Mini Theatre - Solo', price: 300 }, { name: 'A cultural MASCOT - Group(2 Persons)', price: 500 }, { name: 'ECO Hero - Solo', price: 300 }, { name: 'dance with a prop - Solo', price: 300 }, { name: 'two minute medley - Solo', price: 300 }],
-      grade4: [{ name: 'Two minute Tale-Mini Theatre - Solo', price: 300 }, { name: 'A cultural MASCOT - Group(2 Persons)', price: 500 }, { name: 'ECO Hero - Solo', price: 300 }, { name: 'dance with a prop - Solo', price: 300 }, { name: 'two minute medley - Solo', price: 300 }],
-      grade5: [{ name: 'Two minute Tale-Mini Theatre - Solo', price: 300 }, { name: 'A cultural MASCOT - Group(2 Persons)', price: 500 }, { name: 'ECO Hero - Solo', price: 300 }, { name: 'dance with a prop - Solo', price: 300 }, { name: 'two minute medley - Solo', price: 300 }, { name: 'States and their suprises - Group(2 Persons)', price: 500 }],
-      grade6: [{ name: 'Gadget World - Solo', price: 300 }, { name: 'Vibrant Visage - Group(2 Persons)', price: 500 }, { name: 'Tech based triumph - Group(2 Persons)', price: 500 }, { name: 'Dream Design Do - Solo', price: 300 }, { name: '60 second spotlight- picture based - Solo', price: 300 }, { name: 'Rhythm Rumble - Solo', price: 300 }, { name: 'two minute medley - Solo', price: 300 }, { name: 'Upscaled Art Flow - Group(2 Persons)', price: 500 }, { name: 'States and their suprises - Group(2 Persons)', price: 500 }],
-      grade7: [{ name: 'Gadget World - Solo', price: 300 }, { name: 'Vibrant Visage - Group(2 Persons)', price: 500 }, { name: 'Tech based triumph - Group(2 Persons)', price: 500 }, { name: 'Dream Design Do - Solo', price: 300 }, { name: '60 second spotlight- picture based - Solo', price: 300 }, { name: 'Rhythm Rumble - Solo', price: 300 }, { name: 'two minute medley - Solo', price: 300 }, { name: 'Upscaled Art Flow - Group(2 Persons)', price: 500 }],
-      grade8: [{ name: 'Gadget World - Solo', price: 300 }, { name: 'Vibrant Visage - Group(2 Persons)', price: 500 }, { name: 'Tech based triumph - Group(2 Persons)', price: 500 }, { name: 'Dream Design Do - Solo', price: 300 }, { name: '60 second spotlight- picture based - Solo', price: 300 }, { name: 'Rhythm Rumble - Solo', price: 300 }, { name: 'two minute medley - Solo', price: 300 }, { name: 'Upscaled Art Flow - Group(2 Persons)', price: 500 }],
-      grade9: [{ name: 'Inventia - Group(2-3 Persons)', price: 500 }, { name: 'Pitch Bharath - Group(3-4 Persons)', price: 500 }, { name: 'Reflection through moments - Group(2 Persons)', price: 500 }, { name: 'Culture Carnival - Group(5 Persons)', price: 500 }, { name: 'Digital Arena - Group(3-4 Persons)', price: 500 }, { name: 'Path Finder - Solo', price: 300 }, { name: 'Echoes of Eloquence - Solo', price: 300 }, { name: 'Binary Battle - Solo', price: 300 }, { name: 'Rhythm Rumble - Solo', price: 300 }, { name: 'Discovery Files - Group(2-4 Persons)', price: 500 }, { name: 'Unplugged voices - Solo', price: 300 }, { name: 'Meme to Motion', price: 300 }],
-      combined: [{ name: 'Swirl and Twirl - Group(5-10 Persons)', price: 800 }, { name: 'Sovereignity Symphony - Group(5-12 Persons)', price: 800 }, { name: 'From Films to Fashion - Solo', price: 300 }, { name: 'Flash ad - Group(3-4 Persons)', price: 500 }]
+      preprimary: [{name:'Happy feet - Solo',price:300},{name:'Innocence in paint - Solo',price:300},{name:'Whats in my bag? - Solo',price:300},{name:'Moudling minds - Solo',price:300}],
+      grade1: [{name:'Soul Speaks - Solo',price:300},{name:'India Icons - Solo',price:300},{name:'Pieces to picture',price:300}],
+      grade2: [{name:'Soul Speaks - Solo',price:300},{name:'India Icons - Solo',price:300},{name:'Pieces to picture - Solo',price:300}],
+      grade3: [{name:'Two minute Tale-Mini Theatre - Solo',price:300},{name:'A cultural MASCOT - Group(2 Persons)',price:500},{name:'ECO Hero - Solo',price:300},{name:'dance with a prop - Solo',price:300},{name:'two minute medley - Solo',price:300}],
+      grade4: [{name:'Two minute Tale-Mini Theatre - Solo',price:300},{name:'A cultural MASCOT - Group(2 Persons)',price:500},{name:'ECO Hero - Solo',price:300},{name:'dance with a prop - Solo',price:300},{name:'two minute medley - Solo',price:300}],
+      grade5: [{name:'Two minute Tale-Mini Theatre - Solo',price:300},{name:'A cultural MASCOT - Group(2 Persons)',price:500},{name:'ECO Hero - Solo',price:300},{name:'dance with a prop - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'States and their suprises - Group(2 Persons)',price:500}],
+      grade6: [{name:'Gadget World - Solo',price:300},{name:'Vibrant Visage - Group(2 Persons)',price:500},{name:'Tech based triumph - Group(2 Persons)',price:500},{name:'Dream Design Do - Solo',price:300},{name:'60 second spotlight- picture based - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'Upscaled Art Flow - Group(2 Persons)',price:500},{name:'States and their suprises - Group(2 Persons)',price:500}],
+      grade7: [{name:'Gadget World - Solo',price:300},{name:'Vibrant Visage - Group(2 Persons)',price:500},{name:'Tech based triumph - Group(2 Persons)',price:500},{name:'Dream Design Do - Solo',price:300},{name:'60 second spotlight- picture based - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'Upscaled Art Flow - Group(2 Persons)',price:500}],
+      grade8: [{name:'Gadget World - Solo',price:300},{name:'Vibrant Visage - Group(2 Persons)',price:500},{name:'Tech based triumph - Group(2 Persons)',price:500},{name:'Dream Design Do - Solo',price:300},{name:'60 second spotlight- picture based - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'two minute medley - Solo',price:300},{name:'Upscaled Art Flow - Group(2 Persons)',price:500}],
+      grade9: [{name:'Inventia - Group(2-3 Persons)',price:500},{name:'Pitch Bharath - Group(3-4 Persons)',price:500},{name:'Reflection through moments - Group(2 Persons)',price:500},{name:'Culture Carnival - Group(5 Persons)',price:500},{name:'Digital Arena - Group(3-4 Persons)',price:500},{name:'Path Finder - Solo',price:300},{name:'Echoes of Eloquence - Solo',price:300},{name:'Binary Battle - Solo',price:300},{name:'Rhythm Rumble - Solo',price:300},{name:'Discovery Files - Group(2-4 Persons)',price:500},{name:'Unplugged voices - Solo',price:300},{name:'Meme to Motion',price:300}],
+      combined: [{name:'Swirl and Twirl - Group(5-10 Persons)',price:800},{name:'Sovereignity Symphony - Group(5-12 Persons)',price:800},{name:'From Films to Fashion - Solo',price:300},{name:'Flash ad - Group(3-4 Persons)',price:500}]
     };
 
-    let selectedEvents = [];
-    let eventParticipants = {};
-    let currentTab = 'preprimary';
-
-    // [Include ALL your existing JavaScript functions: switchTab, initEvents, toggleEvent, updateEventButtons, updateDisplay, showError EXACTLY as in original]
+    let selectedEvents = [], eventParticipants = {}, currentTab = 'preprimary';
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tabName = btn.getAttribute('data-tab');
-        switchTab(tabName);
-      });
+      btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
     });
 
     function switchTab(tabName) {
@@ -169,112 +161,83 @@
       document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
       document.getElementById(tabName).classList.add('active');
       document.getElementById('selectedGrade').value = tabName;
-      initEvents();
-      updateDisplay();
+      initEvents(); updateDisplay();
     }
 
     function initEvents() {
-      const gridId = `eventsGrid-${currentTab}`;
-      const grid = document.getElementById(gridId);
+      const grid = document.getElementById(`eventsGrid-${currentTab}`);
       grid.innerHTML = allEvents[currentTab].map(event => {
         const id = event.name.toLowerCase().replace(/[^a-z0-9]/g, '');
         if (!(event.name in eventParticipants)) eventParticipants[event.name] = 0;
-        return `
-          <div class="event-item" data-event="${event.name}">
-            <div class="event-name">${event.name}</div>
-            <div class="event-price">₹${event.price}</div>
-            <div class="participant-inputs">
-              <span>Participants:</span>
-              <input type="number" id="${id}" class="participant-input" min="0" max="50" value="${eventParticipants[event.name] || 0}" style="${selectedEvents.some(e => e.name === event.name) ? '' : 'display:none;'}">
-            </div>
-          </div>
-        `;
+        return `<div class="event-item" data-event="${event.name}">
+          <div class="event-name">${event.name}</div>
+          <div class="event-price">₹${event.price}</div>
+          <div class="participant-inputs">
+            <span>Participants:</span>
+            <input type="number" id="${id}" class="participant-input" min="0" max="50" value="${eventParticipants[event.name]}" style="${selectedEvents.some(e => e.name === event.name)?'':'display:none;'}">
+          </div></div>`;
       }).join('');
 
       grid.querySelectorAll('.event-item').forEach(item => {
-        const eventName = item.getAttribute('data-event');
         item.addEventListener('click', (e) => {
           if (e.target.tagName.toLowerCase() === 'input') return;
-          toggleEvent(eventName);
+          toggleEvent(item.getAttribute('data-event'));
         });
       });
-
-      grid.querySelectorAll('.participant-input').forEach(input => {
-        input.addEventListener('change', () => updateDisplay());
-      });
-
+      grid.querySelectorAll('.participant-input').forEach(input => input.addEventListener('change', updateDisplay));
       updateEventButtons();
     }
 
     function toggleEvent(eventName) {
       const index = selectedEvents.findIndex(e => e.name === eventName);
       const event = allEvents[currentTab].find(e => e.name === eventName);
-      const inputId = eventName.toLowerCase().replace(/[^a-z0-9]/g, '');
-      const input = document.getElementById(inputId);
-
+      const input = document.getElementById(eventName.toLowerCase().replace(/[^a-z0-9]/g, ''));
       if (index > -1) {
-        selectedEvents.splice(index, 1);
-        if (input) { input.style.display = 'none'; input.value = 0; }
+        selectedEvents.splice(index, 1); if (input) { input.style.display = 'none'; input.value = 0; }
         eventParticipants[eventName] = 0;
       } else {
-        selectedEvents.push(event);
-        if (input) {
-          input.style.display = 'block';
-          if (!input.value || input.value === '0') input.value = 1;
-          eventParticipants[eventName] = parseInt(input.value) || 1;
-        }
+        selectedEvents.push(event); if (input) { input.style.display = 'block'; if (!input.value || input.value === '0') input.value = 1; }
+        eventParticipants[eventName] = parseInt(input?.value) || 1;
       }
-      updateDisplay();
-      updateEventButtons();
+      updateDisplay(); updateEventButtons();
     }
 
     function updateEventButtons() {
       document.querySelectorAll('.event-item').forEach(item => {
-        const eventName = item.getAttribute('data-event');
-        if (selectedEvents.some(e => e.name === eventName)) {
-          item.classList.add('selected');
-        } else {
-          item.classList.remove('selected');
-        }
+        item.classList.toggle('selected', selectedEvents.some(e => e.name === item.getAttribute('data-event')));
       });
     }
 
     function updateDisplay() {
       selectedEvents.forEach(event => {
-        const inputId = event.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-        const input = document.getElementById(inputId);
+        const input = document.getElementById(event.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
         if (input) eventParticipants[event.name] = parseInt(input.value) || 0;
       });
-
       const totalEvents = selectedEvents.length;
       const totalParticipants = Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0);
       const grandTotal = selectedEvents.reduce((sum, event) => sum + (event.price * (eventParticipants[event.name] || 0)), 0);
-
       document.getElementById('totalEvents').textContent = totalEvents;
       document.getElementById('totalParticipants').textContent = totalParticipants;
       document.getElementById('totalAmount').textContent = `₹${grandTotal.toLocaleString()}`;
     }
 
-    // ✅ NEW: Direct Google Drive file upload (NO IMGUR)
+    // ✅ FIXED FILE UPLOAD (No Imgur - Direct to Google Drive)
     async function uploadFileToDrive(file) {
       return new Promise((resolve) => {
         const reader = new FileReader();
         reader.onload = async (e) => {
-          const base64 = e.target.result.split(',')[1];
-          const formData = new FormData();
-          formData.append('data', base64);
-          formData.append('mimetype', file.type);
-          formData.append('filename', file.name);
-          
           try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbz7iCrAmPASjDdvYDtLWuwXKXhWZU9Ler2ppo01evzrK0Q0s75z0LnlpdCnQQRcqpEV/exec', {  // ← REPLACE THIS
+            const response = await fetch(APPS_SCRIPT_URL, {
               method: 'POST',
-              body: formData
+              body: new URLSearchParams({
+                data: e.target.result.split(',')[1],
+                mimetype: file.type,
+                filename: file.name
+              })
             });
-            const fileUrl = await response.text();
-            resolve(fileUrl);
-          } catch (error) {
-            resolve(`File: ${file.name}`); // Fallback
+            resolve(await response.text());
+          } catch {
+            resolve(file.name);
           }
         };
         reader.readAsDataURL(file);
@@ -287,46 +250,22 @@
       const successMsg = document.getElementById('successMsg');
       const formContainer = document.querySelector('.form-container');
 
-      // Validation
-      const required = ['schoolName', 'contact', 'email', 'transactionId'];
+      const required = ['schoolName','contact','email','transactionId'];
       for (let field of required) {
-        const el = document.getElementById(field);
-        if (!el.value.trim()) {
+        if (!document.getElementById(field).value.trim()) {
           showError(field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) + ' required');
           return;
         }
       }
 
-      const fileInput = document.getElementById('paymentProof');
-      if (!fileInput.files[0]) {
-        showError('Payment Proof required');
-        return;
-      }
+      if (!document.getElementById('paymentProof').files[0]) { showError('Payment Proof required'); return; }
+      if (selectedEvents.length === 0) { showError('Select at least one event'); return; }
+      if (Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0) === 0) { showError('Add participants'); return; }
 
-      if (selectedEvents.length === 0) {
-        showError('Select at least one event');
-        return;
-      }
-
-      const totalParticipants = Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0);
-      if (totalParticipants === 0) {
-        showError('Add participants for selected events');
-        return;
-      }
-
-      submitBtn.disabled = true;
-      formContainer.style.display = 'none';
-      loading.style.display = 'block';
+      submitBtn.disabled = true; formContainer.style.display = 'none'; loading.style.display = 'block';
 
       try {
-        // 1. Upload payment proof to Google Drive
-        const file = fileInput.files[0];
-        const fileUrl = await uploadFileToDrive(file);
-
-        // 2. Submit registration data
-        const totalAmountText = document.getElementById('totalAmount').textContent.replace(/[₹,]/g, '');
-        const totalAmount = parseInt(totalAmountText) || 0;
-
+        const fileUrl = await uploadFileToDrive(document.getElementById('paymentProof').files[0]);
         const formData = {
           schoolName: document.getElementById('schoolName').value.trim(),
           contact: document.getElementById('contact').value.trim(),
@@ -334,46 +273,36 @@
           transactionId: document.getElementById('transactionId').value.trim(),
           selectedGrade: document.getElementById('selectedGrade').value,
           eventParticipants: eventParticipants,
-          selectedEvents: selectedEvents.map(e => e.name),
-          totalAmount: totalAmount,
-          fileUrl: fileUrl
+          totalAmount: parseInt(document.getElementById('totalAmount').textContent.replace(/[₹,]/g, '')) || 0,
+          fileUrl
         };
 
-        const response = await fetch('YOUR_APPS_SCRIPT_WEBAPP_URL_HERE', {  // ← REPLACE THIS
+        const response = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(formData)
         });
 
         const result = await response.text();
-        console.log('Result:', result);
-
-        if (result.startsWith('SUCCESS')) {
-          loading.style.display = 'none';
-          successMsg.style.display = 'block';
+        if (result.includes('SUCCESS')) {
+          loading.style.display = 'none'; successMsg.style.display = 'block';
         } else {
           throw new Error(result);
         }
       } catch (error) {
         showError('Submission failed: ' + error.message);
-        formContainer.style.display = 'block';
-        loading.style.display = 'none';
-        submitBtn.disabled = false;
+        formContainer.style.display = 'block'; loading.style.display = 'none'; submitBtn.disabled = false;
       }
     }
 
     function showError(message) {
       const errorMsg = document.getElementById('errorMsg');
-      errorMsg.textContent = message;
-      errorMsg.style.display = 'block';
+      errorMsg.textContent = message; errorMsg.style.display = 'block';
       setTimeout(() => errorMsg.style.display = 'none', 5000);
     }
 
-    // Initialize
-    initEvents();
-    updateDisplay();
+    initEvents(); updateDisplay();
     document.getElementById('submitBtn').addEventListener('click', submitForm);
   </script>
 </body>
 </html>
-
