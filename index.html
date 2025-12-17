@@ -1,440 +1,288 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>🇮🇳 Tiranga Registration Form</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
-    .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); overflow: hidden; }
-    .header { background: linear-gradient(135deg, #ff6b6b, #feca57); padding: 30px; text-align: center; color: white; }
-    .header h1 { font-size: 2.2em; margin-bottom: 10px; }
-    .tabs { display: flex; flex-wrap: wrap; background: #f8f9fa; border-bottom: 2px solid #dee2e6; }
-    .tab-btn { flex: 1; padding: 10px; border: none; background: none; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.85rem; }
-    .tab-btn.active { background: #007bff; color: white; }
-    .tab-content { display: none; padding: 30px 0 10px; }
-    .tab-content.active { display: block; }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-    input, select { width: 100%; padding: 12px; border: 2px solid #e1e5e9; border-radius: 12px; font-size: 16px; transition: all 0.3s; }
-    input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
-    .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin-bottom: 25px; }
-    .event-item { padding: 15px; border: 2px solid #e1e5e9; border-radius: 12px; cursor: pointer; transition: all 0.3s; text-align: center; }
-    .event-item:hover { border-color: #667eea; transform: translateY(-2px); }
-    .event-item.selected { border-color: #ff6b6b; background: linear-gradient(135deg, #ff6b6b, #ff8e8e); color: white; transform: translateY(-3px); }
-    .event-price { font-weight: bold; font-size: 1.1em; margin: 5px 0; }
-    .participant-inputs { display: grid; grid-template-columns: 1fr 80px; gap: 10px; align-items: center; margin-top: 10px; }
-    .participant-input { width: 100%; padding: 8px; border: 2px solid #e1e5e9; border-radius: 8px; text-align: center; font-weight: bold; }
-    .participant-input:focus { border-color: #28a745; }
-    .totals { background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 25px; text-align: center; }
-    .total-amount { font-size: 2em; font-weight: bold; color: #28a745; margin: 10px 0; }
-    .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 12px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-    .submit-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(40,167,69,0.3); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-    .loading, .success { display: none; text-align: center; padding: 40px; }
-    .success { background: #d4edda; border-radius: 12px; color: #155724; }
-    .error { display: none; padding: 15px; background: #f8d7da; border-radius: 12px; color: #721c24; margin-bottom: 15px; font-size: 0.9rem; }
-    .form-container { padding: 25px 30px 30px; }
-    .qr-wrapper { margin: 10px auto 20px; width: 220px; height: 220px; border-radius: 16px; border: 2px dashed #ced4da; display: flex; align-items: center; justify-content: center; background: #f8f9fa; }
-    .qr-wrapper img { max-width: 90%; max-height: 90%; display: block; }
-    @media (max-width: 768px) { .events-grid { grid-template-columns: 1fr; } .participant-inputs { grid-template-columns: 1fr; } .tabs { flex-direction: column; } }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>Tiranga Registration</h1>
-      <p>Complete event registration by grade level</p>
-    </div>
+function doGet() {
+  var html = ''
+  + '<!DOCTYPE html>'
+  + '<html>'
+  + '<head>'
+  + '<meta charset="UTF-8">'
+  + '<title>Tiranga Registration</title>'
+  + '<style>'
+  // GLOBAL FUTURISTIC STYLE
+  + 'body{font-family:\'Segoe UI\',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;'
+  + 'background:radial-gradient(circle at 0% 0%, #ffb347 0, transparent 55%),'
+  + 'radial-gradient(circle at 100% 100%, #00c9a7 0, transparent 55%),'
+  + 'linear-gradient(135deg,#ff9933,#ffffff,#138808);'
+  + 'background-attachment:fixed;padding:20px;}'
+  + '.container{max-width:1100px;margin:auto;padding:28px 26px 30px;border-radius:24px;'
+  + 'background:rgba(255,255,255,0.86);box-shadow:0 18px 45px rgba(0,0,0,0.25),'
+  + '0 0 0 1px rgba(255,255,255,0.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}'
+  + '.logo{text-align:center;margin-bottom:15px}.logo img{max-width:180px;border-radius:20px;}'
+  + 'h1{text-align:center;color:#0f6c2f;letter-spacing:0.06em;text-transform:uppercase;font-size:26px;margin-bottom:4px;}'
+  + 'h2{color:#333;font-size:17px;font-weight:500;text-align:center;margin-top:4px;}'
+  + 'label{font-weight:600;margin-top:12px;display:block;color:#13324a;}'
+  + 'input[type=text],input[type=number],input[type=file],select{width:100%;padding:10px 14px;margin-top:6px;'
+  + 'border-radius:999px;border:1px solid rgba(0,0,0,0.12);box-sizing:border-box;background:#fdfdfd;'
+  + 'transition:border-color .15s,box-shadow .15s,background .15s,transform .08s;}'
+  + 'input:focus,select:focus{outline:none;border-color:#138808aa;box-shadow:0 0 0 3px rgba(19,136,8,0.18);'
+  + 'background:#ffffff;transform:translateY(-1px);}'
+  // GRADE TOGGLE
+  + '.grade{margin-top:16px;border-radius:18px;background:rgba(248,249,250,0.95);overflow:hidden;'
+  + 'border:1px solid rgba(15,108,47,0.06);}'
+  + '.grade-header{padding:12px 16px;background:linear-gradient(120deg,#e3f3ff,#f4fff5);'
+  + 'display:flex;align-items:center;justify-content:space-between;cursor:pointer;border-radius:18px;'
+  + 'transition:background-color .2s,box-shadow .2s,transform .1s;}'
+  + '.grade-title{font-size:16px;font-weight:600;color:#103b6b;}'
+  + '.toggle-icon{font-size:18px;color:#138808;}'
+  + '.grade-header:hover{background:linear-gradient(120deg,#d2ebff,#e9ffe9);'
+  + 'box-shadow:0 4px 12px rgba(0,0,0,0.12);transform:translateY(-1px);}'
+  + '.grade-body{padding:10px 16px 16px;display:none;}'
+  // EVENT CARDS
+  + '.events-grid{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}'
+  + '.event{flex:1 1 250px;background:linear-gradient(135deg,#ffffff,#f5fbff);border-radius:16px;'
+  + 'padding:10px 14px;display:flex;align-items:center;gap:10px;'
+  + 'box-shadow:0 4px 12px rgba(0,0,0,0.08);transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;'
+  + 'border:1px solid #e0e0e0;}'
+  + '.event:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.16);border-color:#13880833;}'
+  + '.event input[type=checkbox]{transform:scale(1.2);accent-color:#138808;}'
+  + '.event-title{flex:1;font-size:14px;color:#123049;}'
+  + '.event-price{font-weight:600;color:#138808;white-space:nowrap;}'
+  + '.event input[type=number]{width:70px;margin-top:0;}'
+  // TOTAL + PAYMENT
+  + '.total-box{margin-top:20px;background:rgba(233,255,233,0.95);padding:15px;border-radius:16px;text-align:center;'
+  + 'box-shadow:0 6px 16px rgba(0,0,0,0.12);}'
+  + '.payment-section{margin-top:20px;padding:15px;border-radius:18px;background:rgba(248,249,255,0.95);'
+  + 'display:grid;grid-template-columns:1.2fr 1fr;gap:15px;box-shadow:0 8px 22px rgba(0,0,0,0.12);}'
+  + '.payment-details label{margin-top:8px;}'
+  + '.qr{text-align:center}'
+  + '.qr img{width:220px;border:2px dashed #999;padding:10px;border-radius:20px;background:#ffffffcc;}'
+  // BUTTONS
+  + 'button{margin-top:20px;width:100%;padding:14px 18px;font-size:18px;'
+  + 'background:linear-gradient(135deg,#19a34a,#0f7b33);color:#fff;border:none;border-radius:999px;cursor:pointer;'
+  + 'box-shadow:0 8px 18px rgba(0,0,0,0.18);transition:transform .1s,box-shadow .1s,filter .15s;}'
+  + 'button:hover{filter:brightness(1.05);box-shadow:0 10px 24px rgba(0,0,0,0.22);transform:translateY(-1px);}'
+  + 'button:active{transform:translateY(1px);box-shadow:0 4px 12px rgba(0,0,0,0.18);}'
+  // TEXT & SUMMARY
+  + '#msg{text-align:center;font-weight:bold;margin-top:15px;color:#138808;font-size:18px}'
+  + '#eventSummary{margin-top:15px;}'
+  + '@media (max-width:768px){.payment-section{grid-template-columns:1fr;}}'
+  + '</style>'
+  + '</head>'
+  + '<body>'
+  + '<div class="container">'
+  + '<div class="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkugNWL7_vu5xBj5I9fI42wPpobpJv3nhLFg&s"></div>'
+  + '<h1>Tiranga Event Registration</h1>'
+  + '<h2>EuroSchool HSR Tiranga Fest 2026 🇮🇳 – Register online for a celebration of talent and creativity!</h2>'
+  + '<label>School Name <span style="color:red">*</span></label>'
+  + '<input id="school" required>'
+  + '<label>Contact Number <span style="color:red">*</span></label>'
+  + '<input id="contact" required>'
+  + '<div id="grades"></div>'
+  + '<div class="total-box"><h2>Total Amount: ₹<span id="total">0</span></h2></div>'
+  + '<label>Event Summary (selected events)</label>'
+  + '<select id="eventSummary"><option value="">No events selected yet</option></select>'
+  + '<div class="payment-section">'
+  + '  <div class="payment-details">'
+  + '    <label>Transaction ID</label><input id="txn">'
+  + '    <label>Upload Payment Proof</label><input type="file" id="proof" accept="image/*,.pdf">'
+  + '  </div>'
+  + '  <div class="qr">'
+  + '    <h3>Scan to Pay</h3>'
+  + '    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=yourupi@upi&pn=TirangaFest">'
+  + '    <p><b>UPI ID:</b> yourupi@upi</p>'
+  + '  </div>'
+  + '</div>'
+  + '<button onclick="submitForm()">Submit Registration</button>'
+  + '<div id="msg"></div>'
+  + '</div>'
+  + '<script>'
+  // EVENTS
+  + 'const EVENTS={'
+  + '"Pre-Primary":[["Happy Feet - Solo",300],["Innocence in Paint - Solo",300],["Whats in my Bag? - Solo",300],["Moulding Minds - Solo",300]],'
+  + '"Grade I":[["Soul Speaks - Solo",300],["India Icons - Solo",300],["Pieces to Picture - Solo",300]],'
+  + '"Grade II":[["Soul Speaks - Solo",300],["India Icons - Solo",300],["Pieces to Picture - Solo",300]],'
+  + '"Grade III":[["Two Minute Tale - Solo",300],["A Cultural MASCOT - Group(2)",500],["ECO Hero - Solo",300],["Dance with a Prop - Solo",300],["Two Minute Medley - Solo",300]],'
+  + '"Grade IV":[["Two Minute Tale - Solo",300],["A Cultural MASCOT - Group(2)",500],["ECO Hero - Solo",300],["Dance with a Prop - Solo",300],["Two Minute Medley - Solo",300]],'
+  + '"Grade V":[["Two Minute Tale - Solo",300],["A Cultural MASCOT - Group(2)",500],["ECO Hero - Solo",300],["Dance with a Prop - Solo",300],["Two Minute Medley - Solo",300],["States & Surprises - Group(2)",500]],'
+  + '"Grade VI":[["Gadget World - Solo",300],["Vibrant Visage - Group(2)",500],["Tech Based Triumph - Group(2)",500],["Dream Design Do - Solo",300],["60 Second Spotlight - Solo",300],["Rhythm Rumble - Solo",300],["Two Minute Medley - Solo",300],["Upscaled Art Flow - Group(2)",500],["States & Surprises - Group(2)",500]],'
+  + '"Grade VII":[["Gadget World - Solo",300],["Vibrant Visage - Group(2)",500],["Tech Based Triumph - Group(2)",500],["Dream Design Do - Solo",300],["60 Second Spotlight - Solo",300],["Rhythm Rumble - Solo",300],["Two Minute Medley - Solo",300],["Upscaled Art Flow - Group(2)",500]],'
+  + '"Grade VIII":[["Gadget World - Solo",300],["Vibrant Visage - Group(2)",500],["Tech Based Triumph - Group(2)",500],["Dream Design Do - Solo",300],["60 Second Spotlight - Solo",300],["Rhythm Rumble - Solo",300],["Two Minute Medley - Solo",300],["Upscaled Art Flow - Group(2)",500]],'
+  + '"Grade IX-XII":[["Inventia - Group",500],["Pitch Bharath - Group",500],["Reflection Through Moments",500],["Culture Carnival",500],["Digital Arena",900],["Path Finder - Solo",300],["Echoes of Eloquence - Solo",300],["Binary Battle - Solo",300],["Rhythm Rumble - Solo",300],["Discovery Files - Group",500],["Unplugged Voices - Solo",300]]'
+  + '};'
+  // RENDER GRADES
+  + 'const wrap=document.getElementById("grades");'
+  + 'Object.keys(EVENTS).forEach(function(g){'
+  + '  var gradeDiv=document.createElement("div");'
+  + '  gradeDiv.className="grade";'
+  + '  gradeDiv.innerHTML='
+  + '"<div class=\\"grade-header\\" onclick=\\"toggleGradeBody(this)\\">" +'
+  + '"<span class=\\"grade-title\\">"+g+"</span>" +'
+  + '"<span class=\\"toggle-icon\\">+</span>" +'
+  + '"</div><div class=\\"grade-body\\"><div class=\\"events-grid\\"></div></div>";'
+  + '  var grid = gradeDiv.querySelector(".events-grid");'
+  + '  EVENTS[g].forEach(function(e){'
+  + '    grid.innerHTML+='
+  + '"<div class=\\"event\\">" +'
+  + '"<input type=\\"checkbox\\" data-grade=\\""+g+"\\" data-event-name=\\""+e[0]+"\\" data-price=\\""+e[1]+"\\" onchange=\\"calcTotal();updateSummary();\\">" +'
+  + '"<div class=\\"event-title\\">"+e[0]+"</div>" +'
+  + '"<div class=\\"event-price\\">₹"+e[1]+"</div>" +'
+  + '"<input type=\\"number\\" min=\\"1\\" placeholder=\\"#\\" onchange=\\"calcTotal();updateSummary();\\">" +'
+  + '"</div>";'
+  + '  });'
+  + '  wrap.appendChild(gradeDiv);'
+  + '});'
+  // COMBINED
+  + 'var dCombined=document.createElement("div");'
+  + 'dCombined.className="grade";'
+  + 'dCombined.innerHTML='
+  + '"<div class=\\"grade-header\\" onclick=\\"toggleGradeBody(this)\\">" +'
+  + '"<span class=\\"grade-title\\">Combined Events (Grade VI-XII)</span>" +'
+  + '"<span class=\\"toggle-icon\\">+</span>" +'
+  + '"</div><div class=\\"grade-body\\"><div class=\\"events-grid\\"></div></div>";'
+  + 'var gridCombined = dCombined.querySelector(".events-grid");'
+  + 'var combinedEvents=['
+  + '["Swirl and Twirl - Group(5-10 Persons)",800],'
+  + '["Sovereignty Symphony - Group(5-12 Persons)",800],'
+  + '["From Films to Fashion - Solo",300],'
+  + '["Flash Ad - Group(3-4 Persons)",500]'
+  + '];'
+  + 'combinedEvents.forEach(function(e){'
+  + '  gridCombined.innerHTML+='
+  + '"<div class=\\"event\\">" +'
+  + '"<input type=\\"checkbox\\" data-grade=\\"Combined\\" data-event-name=\\""+e[0]+"\\" data-price=\\""+e[1]+"\\" onchange=\\"calcTotal();updateSummary();\\">" +'
+  + '"<div class=\\"event-title\\">"+e[0]+"</div>" +'
+  + '"<div class=\\"event-price\\">₹"+e[1]+"</div>" +'
+  + '"<input type=\\"number\\" min=\\"1\\" placeholder=\\"#\\" onchange=\\"calcTotal();updateSummary();\\">" +'
+  + '"</div>";'
+  + '});'
+  + 'wrap.appendChild(dCombined);'
+  // FUNCTIONS
+  + 'function toggleGradeBody(headerEl){'
+  + '  var body = headerEl.nextElementSibling;'
+  + '  var icon = headerEl.querySelector(".toggle-icon");'
+  + '  var isOpen = body.style.display === "block";'
+  + '  body.style.display = isOpen ? "none" : "block";'
+  + '  icon.textContent = isOpen ? "+" : "−";'
+  + '}'
+  + 'function calcTotal(){'
+  + '  var total=0;'
+  + '  document.querySelectorAll(".event").forEach(function(ev){'
+  + '    var chk=ev.querySelector("input[type=checkbox]");'
+  + '    var num=ev.querySelector("input[type=number]");'
+  + '    if(chk.checked && num.value){total+=chk.dataset.price*num.value;}'
+  + '  });'
+  + '  document.getElementById("total").innerText=total;'
+  + '}'
+  + 'function updateSummary(){'
+  + '  var summarySelect = document.getElementById("eventSummary");'
+  + '  summarySelect.innerHTML = "";'
+  + '  var opts = [];'
+  + '  document.querySelectorAll(".event").forEach(function(ev){'
+  + '    var chk=ev.querySelector("input[type=checkbox]");'
+  + '    var num=ev.querySelector("input[type=number]");'
+  + '    if(chk.checked && num.value){'
+  + '      var label = chk.dataset.grade + " - " + chk.dataset.eventName + " : " + num.value;'
+  + '      opts.push(label);'
+  + '    }'
+  + '  });'
+  + '  if(opts.length===0){'
+  + '    var opt=document.createElement("option");opt.value="";opt.textContent="No events selected yet";summarySelect.appendChild(opt);'
+  + '  }else{'
+  + '    var first=document.createElement("option");first.value="";first.textContent="Selected events ("+opts.length+")";summarySelect.appendChild(first);'
+  + '    opts.forEach(function(t){var o=document.createElement("option");o.value=t;o.textContent=t;summarySelect.appendChild(o);});'
+  + '  }'
+  + '}'
+  + 'function submitForm(){'
+  + '  var school = document.getElementById("school").value.trim();'
+  + '  var contact = document.getElementById("contact").value.trim();'
+  + '  if(!school){alert("Please enter School Name");document.getElementById("school").focus();return;}'
+  + '  if(!contact){alert("Please enter Contact Number");document.getElementById("contact").focus();return;}'
+  + '  var file=document.getElementById("proof").files[0];'
+  + '  if(!file){alert("Upload payment proof");return;}'
+  + '  var selectedEvents = [];'
+  + '  document.querySelectorAll(".event").forEach(function(ev){'
+  + '    var chk=ev.querySelector("input[type=checkbox]");'
+  + '    var num=ev.querySelector("input[type=number]");'
+  + '    if(chk.checked && num.value){'
+  + '      selectedEvents.push({grade:chk.dataset.grade,name:chk.dataset.eventName,price:Number(chk.dataset.price),count:Number(num.value)});'
+  + '    }'
+  + '  });'
+  + '  if(selectedEvents.length===0){alert("Please select at least one event and enter number of participants/groups.");return;}'
+  + '  var reader=new FileReader();'
+  + '  reader.onloadend=function(){'
+  + '    google.script.run.withSuccessHandler(function(){'
+  + '      document.querySelectorAll(".grade").forEach(function(g){g.style.display="none";});'
+  + '      document.getElementById("school").style.display="none";'
+  + '      document.getElementById("contact").style.display="none";'
+  + '      document.getElementById("txn").style.display="none";'
+  + '      document.getElementById("proof").style.display="none";'
+  + '      document.querySelector(".total-box").style.display="none";'
+  + '      document.querySelector(".qr").style.display="none";'
+  + '      document.querySelector("button").style.display="none";'
+  + '      document.getElementById("eventSummary").style.display="none";'
+  + '      document.querySelectorAll("label").forEach(function(l){l.style.display="none";});'
+  + '      document.getElementById("msg").innerHTML ='
+  + '        "✅ Registration Successful!<br>" +'
+  + '        "<button onclick=\\"window.location.reload()\\">Submit Another Response</button>";'
+  + '    }).saveData({'
+  + '      school:school,'
+  + '      contact:contact,'
+  + '      txn:document.getElementById("txn").value,'
+  + '      total:document.getElementById("total").innerText,'
+  + '      events:selectedEvents,'
+  + '      file:{name:file.name,type:file.type,data:reader.result}'
+  + '    });'
+  + '  };'
+  + '  reader.readAsDataURL(file);'
+  + '}'
+  + '</script>'
+  + '</body>'
+  + '</html>';
 
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="preprimary">Pre-Primary</button>
-      <button class="tab-btn" data-tab="grade1">Grade I</button>
-      <button class="tab-btn" data-tab="grade2">Grade II</button>
-      <button class="tab-btn" data-tab="grade3">Grade III</button>
-      <button class="tab-btn" data-tab="grade4">Grade IV</button>
-      <button class="tab-btn" data-tab="grade5">Grade V</button>
-      <button class="tab-btn" data-tab="grade6">Grade VI</button>
-      <button class="tab-btn" data-tab="grade7">Grade VII</button>
-      <button class="tab-btn" data-tab="grade8">Grade VIII</button>
-      <button class="tab-btn" data-tab="grade9">Grade IX-XII</button>
-      <button class="tab-btn" data-tab="combined">Grades VI-XII</button>
-    </div>
+  return HtmlService.createHtmlOutput(html);
+}
 
-    <div class="form-container">
-      <div class="error" id="errorMsg"></div>
+function saveData(obj){
+  const ss = SpreadsheetApp.getActive();
+  let sh = ss.getSheetByName("Registrations");
+  if(!sh){
+    sh = ss.insertSheet("Registrations");
+    sh.appendRow([
+      "Time",
+      "School Name",
+      "Contact Number",
+      "Grade",
+      "Event",
+      "Number of Participants or Groups",
+      "Price / Event",
+      "Total Price / Event",
+      "Transaction ID",
+      "Payment Proof"
+    ]);
+  }
 
-      <div class="form-group">
-        <label>School Name *</label>
-        <input type="text" id="schoolName" required>
-      </div>
+  let folder = DriveApp.getFoldersByName("Tiranga_Payment_Proofs").hasNext()
+    ? DriveApp.getFoldersByName("Tiranga_Payment_Proofs").next()
+    : DriveApp.createFolder("Tiranga_Payment_Proofs");
 
-      <div class="form-group">
-        <label>Contact Number *</label>
-        <input type="tel" id="contact" required>
-      </div>
+  let data = obj.file.data.split(",")[1];
+  let blob = Utilities.newBlob(Utilities.base64Decode(data), obj.file.type, obj.file.name);
+  let file = folder.createFile(blob);
+  let proofUrl = file.getUrl();
+  let time = new Date();
 
-      <div class="form-group">
-        <label>Email *</label>
-        <input type="email" id="email" required>
-      </div>
-
-      <div class="form-group">
-        <label>Transaction ID *</label>
-        <input type="text" id="transactionId" placeholder="e.g., TXN123456789" required>
-      </div>
-
-      <div class="form-group">
-        <label>Scan to Pay (QR Code)</label>
-        <div class="qr-wrapper">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=UPI%3Ayourupiid%40paytm" alt="Payment QR Code">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Payment Proof *</label>
-        <input type="file" id="paymentProof" accept="image/*,.pdf" required>
-      </div>
-
-      <div class="form-group">
-        <label>Select Events & Participants *</label>
-        <div class="tab-content active" id="preprimary"><div class="events-grid" id="eventsGrid-preprimary"></div></div>
-        <div class="tab-content" id="grade1"><div class="events-grid" id="eventsGrid-grade1"></div></div>
-        <div class="tab-content" id="grade2"><div class="events-grid" id="eventsGrid-grade2"></div></div>
-        <div class="tab-content" id="grade3"><div class="events-grid" id="eventsGrid-grade3"></div></div>
-        <div class="tab-content" id="grade4"><div class="events-grid" id="eventsGrid-grade4"></div></div>
-        <div class="tab-content" id="grade5"><div class="events-grid" id="eventsGrid-grade5"></div></div>
-        <div class="tab-content" id="grade6"><div class="events-grid" id="eventsGrid-grade6"></div></div>
-        <div class="tab-content" id="grade7"><div class="events-grid" id="eventsGrid-grade7"></div></div>
-        <div class="tab-content" id="grade8"><div class="events-grid" id="eventsGrid-grade8"></div></div>
-        <div class="tab-content" id="grade9"><div class="events-grid" id="eventsGrid-grade9"></div></div>
-        <div class="tab-content" id="combined"><div class="events-grid" id="eventsGrid-combined"></div></div>
-      </div>
-
-      <div class="totals">
-        <div>Total Events: <span id="totalEvents">0</span></div>
-        <div>Total Participants: <span id="totalParticipants">0</span></div>
-        <div class="total-amount" id="totalAmount">₹0</div>
-      </div>
-
-      <input type="hidden" id="selectedGrade" value="preprimary">
-      <button class="submit-btn" id="submitBtn">Register Now</button>
-    </div>
-
-    <div class="loading" id="loading">📤 Submitting...</div>
-    <div class="success" id="successMsg">
-      <h2>✅ Registration Successful!</h2>
-      <p>Check your Google Sheet for live updates.</p>
-      <button onclick="location.reload()" style="margin-top:20px;padding:12px 30px;background:#007bff;color:white;border:none;border-radius:8px;cursor:pointer;">Register Another</button>
-    </div>
-  </div>
-
-  <script>
-    // ⚠️ REPLACE WITH YOUR ACTUAL WEB APP URL AFTER DEPLOYMENT
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhDCZLf_fW9FgNJx3LJNKFRD7tDxLnttxJhE2w8_TsVv7bSW22dDZ5cl0fi1QEriS5ig/exec';
-
-    const allEvents = {
-      preprimary: [
-        {name:'Happy feet - Solo',price:300},
-        {name:'Innocence in paint - Solo',price:300},
-        {name:'Whats in my bag? - Solo',price:300},
-        {name:'Moudling minds - Solo',price:300}
-      ],
-      grade1: [
-        {name:'Soul Speaks - Solo',price:300},
-        {name:'India Icons - Solo',price:300},
-        {name:'Pieces to picture',price:300}
-      ],
-      grade2: [
-        {name:'Soul Speaks - Solo',price:300},
-        {name:'India Icons - Solo',price:300},
-        {name:'Pieces to picture - Solo',price:300}
-      ],
-      grade3: [
-        {name:'Two minute Tale-Mini Theatre - Solo',price:300},
-        {name:'A cultural MASCOT - Group(2 Persons)',price:500},
-        {name:'ECO Hero - Solo',price:300},
-        {name:'dance with a prop - Solo',price:300},
-        {name:'two minute medley - Solo',price:300}
-      ],
-      grade4: [
-        {name:'Two minute Tale-Mini Theatre - Solo',price:300},
-        {name:'A cultural MASCOT - Group(2 Persons)',price:500},
-        {name:'ECO Hero - Solo',price:300},
-        {name:'dance with a prop - Solo',price:300},
-        {name:'two minute medley - Solo',price:300}
-      ],
-      grade5: [
-        {name:'Two minute Tale-Mini Theatre - Solo',price:300},
-        {name:'A cultural MASCOT - Group(2 Persons)',price:500},
-        {name:'ECO Hero - Solo',price:300},
-        {name:'dance with a prop - Solo',price:300},
-        {name:'two minute medley - Solo',price:300},
-        {name:'States and their suprises - Group(2 Persons)',price:500}
-      ],
-      grade6: [
-        {name:'Gadget World - Solo',price:300},
-        {name:'Vibrant Visage - Group(2 Persons)',price:500},
-        {name:'Tech based triumph - Group(2 Persons)',price:500},
-        {name:'Dream Design Do - Solo',price:300},
-        {name:'60 second spotlight- picture based - Solo',price:300},
-        {name:'Rhythm Rumble - Solo',price:300},
-        {name:'two minute medley - Solo',price:300},
-        {name:'Upscaled Art Flow - Group(2 Persons)',price:500},
-        {name:'States and their suprises - Group(2 Persons)',price:500}
-      ],
-      grade7: [
-        {name:'Gadget World - Solo',price:300},
-        {name:'Vibrant Visage - Group(2 Persons)',price:500},
-        {name:'Tech based triumph - Group(2 Persons)',price:500},
-        {name:'Dream Design Do - Solo',price:300},
-        {name:'60 second spotlight- picture based - Solo',price:300},
-        {name:'Rhythm Rumble - Solo',price:300},
-        {name:'two minute medley - Solo',price:300},
-        {name:'Upscaled Art Flow - Group(2 Persons)',price:500}
-      ],
-      grade8: [
-        {name:'Gadget World - Solo',price:300},
-        {name:'Vibrant Visage - Group(2 Persons)',price:500},
-        {name:'Tech based triumph - Group(2 Persons)',price:500},
-        {name:'Dream Design Do - Solo',price:300},
-        {name:'60 second spotlight- picture based - Solo',price:300},
-        {name:'Rhythm Rumble - Solo',price:300},
-        {name:'two minute medley - Solo',price:300},
-        {name:'Upscaled Art Flow - Group(2 Persons)',price:500}
-      ],
-      grade9: [
-        {name:'Inventia - Group(2-3 Persons)',price:500},
-        {name:'Pitch Bharath - Group(3-4 Persons)',price:500},
-        {name:'Reflection through moments - Group(2 Persons)',price:500},
-        {name:'Culture Carnival - Group(5 Persons)',price:500},
-        {name:'Digital Arena - Group(3-4 Persons)',price:500},
-        {name:'Path Finder - Solo',price:300},
-        {name:'Echoes of Eloquence - Solo',price:300},
-        {name:'Binary Battle - Solo',price:300},
-        {name:'Rhythm Rumble - Solo',price:300},
-        {name:'Discovery Files - Group(2-4 Persons)',price:500},
-        {name:'Unplugged voices - Solo',price:300},
-        {name:'Meme to Motion',price:300}
-      ],
-      combined: [
-        {name:'Swirl and Twirl - Group(5-10 Persons)',price:800},
-        {name:'Sovereignity Symphony - Group(5-12 Persons)',price:800},
-        {name:'From Films to Fashion - Solo',price:300},
-        {name:'Flash ad - Group(3-4 Persons)',price:500}
-      ]
-    };
-
-    let selectedEvents = [], eventParticipants = {}, currentTab = 'preprimary';
-
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => switchTab(btn.getAttribute('data-tab')));
-    });
-
-    function switchTab(tabName) {
-      currentTab = tabName;
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
-      document.getElementById(tabName).classList.add('active');
-      document.getElementById('selectedGrade').value = tabName;
-      initEvents(); 
-      updateDisplay();
-    }
-
-    function initEvents() {
-      const grid = document.getElementById(`eventsGrid-${currentTab}`);
-      grid.innerHTML = allEvents[currentTab].map(event => {
-        const id = event.name.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (!(event.name in eventParticipants)) eventParticipants[event.name] = 0;
-        return `<div class="event-item" data-event="${event.name}">
-          <div class="event-name">${event.name}</div>
-          <div class="event-price">₹${event.price}</div>
-          <div class="participant-inputs">
-            <span>Participants:</span>
-            <input type="number" id="${id}" class="participant-input" min="0" max="50" value="${eventParticipants[event.name]}" style="${selectedEvents.some(e => e.name === event.name)?'':'display:none;'}">
-          </div></div>`;
-      }).join('');
-
-      grid.querySelectorAll('.event-item').forEach(item => {
-        item.addEventListener('click', (e) => {
-          if (e.target.tagName.toLowerCase() === 'input') return;
-          toggleEvent(item.getAttribute('data-event'));
-        });
-      });
-      grid.querySelectorAll('.participant-input').forEach(input => input.addEventListener('change', updateDisplay));
-      updateEventButtons();
-    }
-
-    function toggleEvent(eventName) {
-      const index = selectedEvents.findIndex(e => e.name === eventName);
-      const event = allEvents[currentTab].find(e => e.name === eventName);
-      const input = document.getElementById(eventName.toLowerCase().replace(/[^a-z0-9]/g, ''));
-      if (index > -1) {
-        selectedEvents.splice(index, 1); 
-        if (input) { 
-          input.style.display = 'none'; 
-          input.value = 0; 
-        }
-        eventParticipants[eventName] = 0;
-      } else {
-        selectedEvents.push(event); 
-        if (input) { 
-          input.style.display = 'block'; 
-          if (!input.value || input.value === '0') input.value = 1; 
-        }
-        eventParticipants[eventName] = parseInt(input?.value) || 1;
-      }
-      updateDisplay(); 
-      updateEventButtons();
-    }
-
-    function updateEventButtons() {
-      document.querySelectorAll('.event-item').forEach(item => {
-        item.classList.toggle('selected', selectedEvents.some(e => e.name === item.getAttribute('data-event')));
-      });
-    }
-
-    function updateDisplay() {
-      selectedEvents.forEach(event => {
-        const input = document.getElementById(event.name.toLowerCase().replace(/[^a-z0-9]/g, ''));
-        if (input) eventParticipants[event.name] = parseInt(input.value) || 0;
-      });
-      
-      const totalEvents = selectedEvents.length;
-      const totalParticipants = Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0);
-      
-      // Calculate grand total using actual event prices
-      const grandTotal = selectedEvents.reduce((sum, event) => {
-        const participants = eventParticipants[event.name] || 0;
-        return sum + (event.price * participants);
-      }, 0);
-      
-      document.getElementById('totalEvents').textContent = totalEvents;
-      document.getElementById('totalParticipants').textContent = totalParticipants;
-      document.getElementById('totalAmount').textContent = `₹${grandTotal.toLocaleString()}`;
-    }
-
-    async function uploadFileToDrive(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = async (e) => {
-          try {
-            const response = await fetch(APPS_SCRIPT_URL, {
-              method: 'POST',
-              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-              body: new URLSearchParams({
-                action: 'upload',
-                data: e.target.result.split(',')[1],
-                mimetype: file.type,
-                filename: file.name
-              })
-            });
-            const result = await response.text();
-            resolve(result);
-          } catch (error) {
-            console.error('Upload error:', error);
-            resolve(file.name);
-          }
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    async function submitForm() {
-      const submitBtn = document.getElementById('submitBtn');
-      const loading = document.getElementById('loading');
-      const successMsg = document.getElementById('successMsg');
-      const formContainer = document.querySelector('.form-container');
-
-      const required = ['schoolName','contact','email','transactionId'];
-      for (let field of required) {
-        if (!document.getElementById(field).value.trim()) {
-          showError(field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) + ' required');
-          return;
-        }
-      }
-
-      if (!document.getElementById('paymentProof').files[0]) { 
-        showError('Payment Proof required'); 
-        return; 
-      }
-      if (selectedEvents.length === 0) { 
-        showError('Select at least one event'); 
-        return; 
-      }
-      if (Object.values(eventParticipants).reduce((sum, count) => sum + (count || 0), 0) === 0) { 
-        showError('Add participants'); 
-        return; 
-      }
-
-      submitBtn.disabled = true; 
-      formContainer.style.display = 'none'; 
-      loading.style.display = 'block';
-
-      try {
-        // Upload file first
-        const fileUrl = await uploadFileToDrive(document.getElementById('paymentProof').files[0]);
-        
-        // Prepare event details with prices
-        const eventDetails = {};
-        selectedEvents.forEach(event => {
-          const participants = eventParticipants[event.name] || 0;
-          if (participants > 0) {
-            eventDetails[event.name] = {
-              participants: participants,
-              price: event.price,
-              total: event.price * participants
-            };
-          }
-        });
-        
-        const formData = {
-          action: 'submit',
-          schoolName: document.getElementById('schoolName').value.trim(),
-          contact: document.getElementById('contact').value.trim(),
-          email: document.getElementById('email').value.trim(),
-          transactionId: document.getElementById('transactionId').value.trim(),
-          selectedGrade: document.getElementById('selectedGrade').value,
-          eventDetails: eventDetails,
-          totalAmount: parseInt(document.getElementById('totalAmount').textContent.replace(/[₹,]/g, '')) || 0,
-          fileUrl: fileUrl
-        };
-
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.text();
-        if (result.includes('SUCCESS')) {
-          loading.style.display = 'none'; 
-          successMsg.style.display = 'block';
-        } else {
-          throw new Error(result);
-        }
-      } catch (error) {
-        showError('Submission failed: ' + error.message);
-        formContainer.style.display = 'block'; 
-        loading.style.display = 'none'; 
-        submitBtn.disabled = false;
-      }
-    }
-
-    function showError(message) {
-      const errorMsg = document.getElementById('errorMsg');
-      errorMsg.textContent = message; 
-      errorMsg.style.display = 'block';
-      setTimeout(() => errorMsg.style.display = 'none', 5000);
-    }
-
-    initEvents(); 
-    updateDisplay();
-    document.getElementById('submitBtn').addEventListener('click', submitForm);
-  </script>
-</body>
-</html>
-
-
+  // one row per event with separate columns in your order
+  obj.events.forEach(function(ev){
+    let totalLine = ev.price * ev.count;
+    sh.appendRow([
+      time,
+      obj.school,
+      obj.contact,
+      ev.grade,
+      ev.name,
+      ev.count,
+      ev.price,
+      totalLine,
+      obj.txn,
+      proofUrl
+    ]);
+  });
+}
